@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import copy from './copy.json';
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="main-page">
+      <div className="main-page__content-container">
+        <div>
+          <h1>{copy.name.first}</h1>
+          <h1>{copy.name.last}</h1>
+        </div>
+        <div className="main-page__small-text">
+          <p>{copy.description}</p>
+          <p>{copy.resume}</p>
+          <div className="main-page__links">
+            {copy.links.map((link) => (
+              <a
+                key={link.name}
+                rel="noreferrer"
+                target="_blank"
+                href={link.url}
+              >
+                {`@${link.name}`}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

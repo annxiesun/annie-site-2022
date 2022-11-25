@@ -1,0 +1,22 @@
+{
+  "description": "Welcome to my little corner on the world wide web...",
+  "resume": "> Take a copy of my resume!",
+  "name": {
+    "first": "Annie",
+    "last": "Sun"
+  },
+  "links": [
+    {
+      "name": "Github",
+      "url": "https://github.com/annxiesun" 
+    },
+    {
+      "name": "Behance",
+      "url": "https://www.behance.net/annxiesun/projects" 
+    },
+    {
+      "name": "Twitter",
+      "url": "https://twitter.com/annie17s"
+    }
+  ]
+}
