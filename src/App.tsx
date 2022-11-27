@@ -1,14 +1,15 @@
 import React from 'react';
 import copy from './copy.json';
 import './App.scss';
+import GlitchText from './components/GlitchText';
 
 function App() {
   return (
     <div className="main-page">
       <div className="main-page__content-container">
         <div>
-          <h1>{copy.name.first}</h1>
-          <h1>{copy.name.last}</h1>
+          <GlitchText word={copy.name.first} />
+          <GlitchText word={copy.name.last} />
         </div>
         <div className="main-page__small-text">
           <p>{copy.description}</p>

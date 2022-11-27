@@ -1,0 +1,32 @@
+.glitch-text {
+  position: relative;
+  width: fit-content;
+  
+  &__glitch {
+    position: absolute;
+    transition: 0.3s;
+    z-index: 999;
+  }
+
+  &__ghost {
+    opacity: 0;
+  }
+
+  &__word {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.top {
+  left: calc(50% + 2px);
+  transform: translateX(-50%);
+  text-shadow: -2px 0 #49FC00;
+}
+
+.bottom {
+  left: calc(50% - 2px);
+  transform: translateX(-50%);
+  text-shadow: -2px 0 #e700fc;
+}
