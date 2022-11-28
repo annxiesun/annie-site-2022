@@ -2,6 +2,7 @@ import React from 'react';
 import copy from './copy.json';
 import './App.scss';
 import GlitchText from './components/GlitchText';
+import Orb from './components/Orb';
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
           <GlitchText word={copy.name.last} />
         </div>
         <div className="main-page__small-text">
-          <p>{copy.description}</p>
-          <p>{copy.resume}</p>
+          <p className="main-page__desc">{`"${copy.description}"`}</p>
+          <a target="_blank" href="/AnnieSunResume.pdf">
+            {copy.resume}
+          </a>
           <div className="main-page__links">
             {copy.links.map((link) => (
               <a
@@ -28,6 +31,7 @@ function App() {
           </div>
         </div>
       </div>
+      <Orb />
     </div>
   );
 }

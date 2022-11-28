@@ -1,0 +1,56 @@
+#orb-container {
+  position: relative;
+}
+.glow {
+  position: absolute;
+  border-radius: 500px;
+  height: 300px;
+  width: 300px;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  border: 1px white solid;
+  transition: transform 1s ease-in-out;
+  opacity: 0;
+}
+
+.animated-glow {
+  animation: waves 1.5s infinite;
+  transition: transform 1s ease-in-out;
+}
+
+.animated-glow2 {
+  animation: waves 2s infinite;
+  transition: transform 1s ease-in-out;
+}
+
+
+.glow2 {
+  position: absolute;
+  border-radius: 500px;
+  height: 300px;
+  width: 300px;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  border: 1px white solid;
+  transition: transform 1s ease-in-out;
+  opacity: 0;
+  animation-delay: 300ms;
+}
+
+@keyframes waves {
+  from {
+    transform: translate(-50%,-50%) scale(100%);
+    opacity: 0;
+  }
+
+  10% {
+    transform: translate(-50%,-50%) scale(100%);
+    opacity: 1;
+  }
+  to {
+    transform:  translate(-50%,-50%) scale(125%);
+    opacity: 0;
+  }
+}

@@ -22,11 +22,13 @@
 .top {
   left: calc(50% + 2px);
   transform: translateX(-50%);
-  text-shadow: -2px 0 #49FC00;
+  text-shadow: -2px 0 var(--hacker-cyan);
+  opacity: 0.8;
 }
 
 .bottom {
   left: calc(50% - 2px);
   transform: translateX(-50%);
   text-shadow: -2px 0 #e700fc;
+  opacity: 0.8;
 }

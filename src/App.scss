@@ -1,18 +1,24 @@
+body {
+  background-color: black;
+}
 h1 {
   font-family: 'Eurostar';
   font-size: 96px;
   line-height: 80%;
   margin: 0;
+  color: white;
 }
 
 p {
   font-family: 'Roboto Mono';
   margin: 0;
+  color: white;
 }
 
 a {
   font-family: 'Roboto Mono';
   text-decoration: none;
+  color: white;
 }
 
 .main-page {
@@ -21,11 +27,20 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  @media only screen and (max-width: 800px) {
+    flex-wrap: wrap-reverse;
+    padding: 2em;
+  }
+
   &__content-container {
     display: flex;
     flex-direction: column;
     max-width: 800px;
     gap: var(--spacing-300);
+    @media only screen and (max-width: 800px) {
+      padding: 0 2em 0em 2em;
+    }
   }
   &__links {
     display: flex;
@@ -38,17 +53,20 @@ a {
     flex-direction: column;
     gap: var(--spacing-200);
   }
+  &__desc {
+    // color: var(--hacker-cyan);
+  }
 }
 
 @font-face {
   font-family: 'Eurostar';
-  src: url(./fonts/EuroStarBlack.ttf) format('truetype');
+  src: url(./resources/fonts/EuroStarBlack.ttf) format('truetype');
 }
 
 @font-face {
   font-family: 'Roboto Mono';
   font-weight: 300;
-  src: url(./fonts/RobotoMono.ttf) format('truetype');
+  src: url(./resources/fonts/RobotoMono.ttf) format('truetype');
 }
 
 :root {
@@ -56,4 +74,5 @@ a {
   --spacing-200: 16px;
   --spacing-300: 24px;
   --spacing-400: 32px;
+  --hacker-cyan: #05d2ed;
 }
