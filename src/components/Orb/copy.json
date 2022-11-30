@@ -1,0 +1,4 @@
+{
+  "onWelcome": ["Oh!", "Hello there, I wasn’t expecting anyone today!", "Welcome..."],
+  "onReturn": ["Welcome back dear visitor…"]
+}

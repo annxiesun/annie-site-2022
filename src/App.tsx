@@ -8,9 +8,7 @@ import FadeIn from 'react-fade-in';
 function App() {
   return (
     <div className="main-page">
-      <div className="main-page__content-container">
-        <Text />
-      </div>
+     
       <Orb />
     </div>
   );

@@ -4,12 +4,16 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FlakesTexture } from 'three/examples/jsm/textures/FlakesTexture';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader';
 import { CubeTexture, WebGLRenderTarget } from 'three';
+import Typewriter from 'typewriter-effect';
+import copy from './copy.json';
 import './styles.scss';
 
-function Orb() {
-  const [animated, setAnimated] = useState(false);
+function Orb(props: {
+  animated: boolean;
+  setAnimated: (value: boolean | (() => boolean)) => void;
+}) {
+  const { animated, setAnimated } = props;
   useLayoutEffect(() => {
-    console.log('hi');
     const animate = () => {
       controls.update();
       renderer.render(scene, camera);
@@ -113,4 +117,54 @@ const ballMaterial = {
   normalScale: new THREE.Vector2(0.15, 0.15),
 };
 
-export default Orb;
+const delay = 50;
+const deleteSpeed = 20;
+const pause = 1500;
+function ConnectedOrb() {
+  const [animated, setAnimated] = useState(false);
+  const [script, setScript] = useState(copy.onWelcome);
+  const [exit, setExit] = useState(false);
+
+  useLayoutEffect(() => {
+    const mainPage = document.getElementById('connected-orb');
+    const fadeOutNodes = mainPage?.childNodes;
+    fadeOutNodes?.forEach((node) => {
+      console.log(node);
+      (node as HTMLElement).style.opacity = '0';
+    });
+    setTimeout(() => {
+      fadeOutNodes?.forEach((node) => {
+        console.log(node);
+        (node as HTMLElement).classList.add('visible');
+      });
+    }, 500);
+  }, []);
+
+  return (
+    <div id="connected-orb" className="connected-orb">
+      <Orb animated={animated} setAnimated={setAnimated} />
+      <div id="type-container">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter.changeDelay(delay);
+            script.forEach((str) => {
+              typewriter.callFunction(() => setAnimated(true));
+              typewriter.typeString(str);
+              typewriter.callFunction(() => setAnimated(false));
+              typewriter.pauseFor(pause);
+              typewriter.deleteAll(deleteSpeed);
+            });
+            typewriter
+              .callFunction(() => {
+                const container = document.getElementById('type-container');
+                container?.classList.remove('visible');
+              })
+              .start();
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default ConnectedOrb;
