@@ -32,30 +32,6 @@ a {
     flex-wrap: wrap-reverse;
     padding: 2em;
   }
-
-  &__content-container {
-    display: flex;
-    flex-direction: column;
-    max-width: 800px;
-    gap: var(--spacing-300);
-    @media only screen and (max-width: 800px) {
-      padding: 0 2em 0em 2em;
-    }
-  }
-  &__links {
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-200);
-  }
-  &__small-text {
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-200);
-  }
-  &__desc {
-    // color: var(--hacker-cyan);
-  }
 }
 
 @font-face {
