@@ -120,10 +120,10 @@ const ballMaterial = {
 const delay = 50;
 const deleteSpeed = 20;
 const pause = 1500;
-function ConnectedOrb() {
+function ConnectedOrb(props: { setExit: (value: boolean) => void }) {
   const [animated, setAnimated] = useState(false);
   const [script, setScript] = useState(copy.onWelcome);
-  const [exit, setExit] = useState(false);
+  const { setExit } = props;
 
   useLayoutEffect(() => {
     const mainPage = document.getElementById('connected-orb');
@@ -138,6 +138,12 @@ function ConnectedOrb() {
         (node as HTMLElement).classList.add('visible');
       });
     }, 500);
+    const visited = localStorage.getItem('visited');
+    if (visited) {
+      if (JSON.parse(visited) === true) {
+        setScript(copy.onReturn);
+      }
+    }
   }, []);
 
   return (
@@ -158,6 +164,7 @@ function ConnectedOrb() {
               .callFunction(() => {
                 const container = document.getElementById('type-container');
                 container?.classList.remove('visible');
+                setExit(true);
               })
               .start();
           }}
