@@ -1,5 +1,9 @@
 body {
   background-color: black;
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 h1 {
   font-family: 'Eurostar';
@@ -16,12 +20,18 @@ p {
   font-family: 'Roboto Mono';
   margin: 0;
   color: white;
+  @media only screen and (max-width: 800px) {
+    font-size: 14px;
+  }
 }
 
 a {
   font-family: 'Roboto Mono';
   text-decoration: none;
   color: white;
+  @media only screen and (max-width: 800px) {
+    font-size: 14px;
+  }
 }
 
 .main-page {

@@ -110,7 +110,7 @@ function Orb(props: {
         }}
         onAnimationEnd={() => setAnimated(() => false)}
       >
-        <div className={animated ? 'animated-glow2 glow2' : 'glow2'} />
+        <div className={animated ? 'animated-glow2 glow2 glow' : 'glow2 glow'} />
       </div>
     </div>
   );
