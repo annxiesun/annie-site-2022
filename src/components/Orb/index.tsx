@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React, { useLayoutEffect, useEffect, useState, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FlakesTexture } from 'three/examples/jsm/textures/FlakesTexture';
@@ -13,7 +13,9 @@ function Orb(props: {
   setAnimated: (value: boolean | (() => boolean)) => void;
 }) {
   const { animated, setAnimated } = props;
-  useLayoutEffect(() => {
+  const mountRef = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
     const animate = () => {
       controls.update();
       renderer.render(scene, camera);
@@ -21,10 +23,23 @@ function Orb(props: {
     };
 
     const scene = new THREE.Scene();
-
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-
     const dimension = 500;
+
+    const onWindowResize = () => {
+      if (window.innerWidth < 700) {
+        camera.aspect = window.innerWidth / 300;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, 300);
+      } else {
+        camera.aspect = 1;
+        camera.updateProjectionMatrix();
+        renderer.setSize(500, 500);
+      }
+    };
+
+    window.addEventListener('resize', onWindowResize, false);
+
     renderer.setSize(dimension, dimension);
     renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -47,8 +62,7 @@ function Orb(props: {
         scene.add(ballMesh);
       });
 
-    const mainPage = document.getElementById('orb-container');
-    mainPage?.appendChild(renderer.domElement);
+    mountRef.current?.appendChild(renderer.domElement);
 
     const camera = new THREE.PerspectiveCamera(
       50,
@@ -57,8 +71,7 @@ function Orb(props: {
       1000
     );
     camera.position.set(0, 0, 400);
-    camera.aspect = 1;
-    camera.updateProjectionMatrix();
+    onWindowResize();
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.autoRotate = true;
@@ -73,9 +86,14 @@ function Orb(props: {
     scene.add(pointlight);
 
     animate();
+
+    return () => {
+      if (mountRef.current) mountRef.current.removeChild(renderer.domElement);
+      window.removeEventListener('resize', onWindowResize, false);
+    };
   }, []);
   return (
-    <div id="orb-container">
+    <div ref={mountRef} id="orb-container">
       <div
         id="glow"
         className={animated ? 'animated-glow glow' : 'glow'}
