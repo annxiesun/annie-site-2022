@@ -12,10 +12,12 @@ function App() {
   });
 
   return (
-    <div className="main-page">
-      {exit && <Text />}
-      <Orb setExit={setExit} />
-    </div>
+    <FadeIn delay={1000}>
+      <div className="main-page">
+        {exit && <Text />}
+        <Orb setExit={setExit} />
+      </div>
+    </FadeIn>
   );
 }
 

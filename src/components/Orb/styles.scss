@@ -7,8 +7,8 @@
 .glow {
   position: absolute;
   border-radius: 500px;
-  height: 300px;
-  width: 300px;
+  height: 180px;
+  width: 180px;
   transform: translate(-50%,-50%);
   left: 50%;
   top: 50%;
@@ -16,8 +16,8 @@
   transition: transform 1s ease-in-out;
   opacity: 0;
   @media only screen and (max-width: 800px) {
-    height: 200px;
-    width: 200px;
+    height: 120px;
+    width: 120px;
   }
 }
 

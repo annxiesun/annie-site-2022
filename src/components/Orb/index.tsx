@@ -28,13 +28,13 @@ function Orb(props: {
 
     const onWindowResize = () => {
       if (window.innerWidth < 700) {
-        camera.aspect = window.innerWidth / 300;
+        camera.aspect = window.innerWidth / 200;
         camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, 300);
+        renderer.setSize(window.innerWidth, 200);
       } else {
         camera.aspect = 1;
         camera.updateProjectionMatrix();
-        renderer.setSize(500, 500);
+        renderer.setSize(300, 300);
       }
     };
 
